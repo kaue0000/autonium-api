@@ -5,7 +5,7 @@
 
 ## Cadastro de revendedores
 
-- **RF001 – Cadastro de revendedor:** O sistema deve permitir que o administrador cadastre novos revendedores, informando nome, CPF, data de nascimento e o endereço.
+- **RF001 – Cadastro de revendedor:** O sistema deve permitir que o administrador cadastre novos revendedores, informando nome, CPF, data de nascimento, endereço e e porcentagem de revenda.
   - **RF001.1 – Validar CPF:** O sistema deve impedir o cadastro caso o CPF já esteja registrado.
 
 ## Acesso
