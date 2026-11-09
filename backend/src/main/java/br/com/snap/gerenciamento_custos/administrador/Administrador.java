@@ -18,9 +18,9 @@ public class Administrador {
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
-    @Column
-    private String email;
+    @Column(name = "firebase_uid", nullable = false, unique = true, updatable = false)
+    private String firebaseUid;
 
-    @Column
-    private String senha;
+    @Column(name = "email")
+    private String email;
 }

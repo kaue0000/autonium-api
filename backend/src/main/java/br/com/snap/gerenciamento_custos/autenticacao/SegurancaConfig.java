@@ -32,7 +32,7 @@ public class SegurancaConfig {
 				.csrf(csrf -> csrf.disable())
 				.sessionManagement(sessao -> sessao.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 				.authorizeHttpRequests(autorizacao -> autorizacao
-						.requestMatchers("/api/auth/login", "/api/auth/cadastro").permitAll()
+						.requestMatchers("/api/auth/login", "/api/auth/cadastro", "/api/auth/logout").permitAll()
 						.anyRequest().authenticated())
 				.exceptionHandling(erros -> erros.authenticationEntryPoint((requisicao, resposta, excecao) -> {
 					resposta.setStatus(HttpServletResponse.SC_UNAUTHORIZED);

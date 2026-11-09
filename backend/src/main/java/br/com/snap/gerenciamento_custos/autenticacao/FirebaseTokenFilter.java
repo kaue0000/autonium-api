@@ -1,6 +1,6 @@
 package br.com.snap.gerenciamento_custos.autenticacao;
 
-import br.com.snap.gerenciamento_custos.funcionario.Funcionario;
+import br.com.snap.gerenciamento_custos.administrador.Administrador;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -27,7 +27,9 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
 	@Override
 	protected boolean shouldNotFilter(HttpServletRequest requisicao) {
 		String caminho = requisicao.getServletPath();
-		return caminho.equals("/api/auth/login") || caminho.equals("/api/auth/cadastro");
+		return caminho.equals("/api/auth/login")
+				|| caminho.equals("/api/auth/cadastro")
+				|| caminho.equals("/api/auth/logout");
 	}
 
 	@Override
@@ -47,9 +49,9 @@ public class FirebaseTokenFilter extends OncePerRequestFilter {
 		}
 
 		try {
-			Funcionario funcionario = servicoAutenticacaoFirebase.validarToken(cabecalho.substring(7));
+			Administrador administrador = servicoAutenticacaoFirebase.validarToken(cabecalho.substring(7));
 			UsernamePasswordAuthenticationToken autenticacao = new UsernamePasswordAuthenticationToken(
-					funcionario,
+					administrador,
 					null,
 					List.of(new SimpleGrantedAuthority("ROLE_ADMIN"))
 			);
